@@ -101,24 +101,6 @@ main. Any string of terminals that can be produced in this manner is consid-
 ered syntactically valid. Any other string has a syntax error and would not be
 a legal program.
 
-Consider a CFG for some programming language of interest. The CFG
-serves as a formal and relatively compact deﬁnition of all syntactically correct
-programs for that programming language. To generate such a program, we
-begin with a special nonterminal known as the CFG’s start symbol, which is
-usually the symbol on the left-hand side (LHS) of the grammar’s ﬁrst rule.
-For example, the start symbol in Figure 2.1 is Prog. From the start symbol, we
-proceed by replacing it with the right-hand side (RHS) of some production for
-that symbol.
-We continue by choosing some nonterminal symbol in our derived string
-of symbols, ﬁnding a production for that nonterminal, and replacing it with
-the string of symbols on the production’s RHS. As a special case, the symbol
-λ denotes the empty or null string string, which indicates that there are no
-symbols on a production’s RHS. The special symbol $ represents the end of
-the input stream or ﬁle.
-We continue applying productions, rewriting nonterminals until none re-
-main. Any string of terminals that can be produced in this manner is consid-
-ered syntactically valid. Any other string has a syntax error and would not be
-a legal program.
 To show how the grammar in Figure 2.1 deﬁnes legal ac programs, the
 derivation of one such program is given in Figure 2.2, beginning with the start
 symbol Prog. Each line represents one step in the derivation. In each line, the
