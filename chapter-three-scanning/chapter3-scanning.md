@@ -100,7 +100,7 @@ particular, you can use regular expressions to program a scanner generator.
 Regular expressions are widely used in computer applications other than
 R
 utility grep uses them to deﬁne search patterns in ﬁles.
-compilers. The Unix 
+compilers. The
 Unix shells allow a restricted form of regular expressions when specifying ﬁle
 lists for a command. Most editors provide a “context search” command that
 enables you to specify desired matches using regular expressions.
@@ -150,15 +150,15 @@ LC is the set of lowercase letters and UC is the set of uppercase letters, then
 (LC | UC) denotes the set of all letters (in either case).
 Large (or inﬁnite) sets are conveniently represented by operations on ﬁnite
 sets of characters and strings. Catenation and alternation may be used. A third
-operation, Kleene closure, as deﬁned below, is also allowed. The operator 
+operation, Kleene closure, as deﬁned below, is also allowed. The operator *
 is the postﬁx Kleene closure operator. For example, let P be a set of strings. Then
-P represents all strings formed by the catenation of zero or more selections
+P* represents all strings formed by the catenation of zero or more selections
 (possibly repeated) from P. (Zero selections are represented by λ.) For exam-
-ple, LC is the set of all words composed only of lowercase letters and of any
+ple, LC* is the set of all words composed only of lowercase letters and of any
 length (including the zero-length word, λ).
-Precisely stated, a string s ∈ P if, and only if, s can be broken into zero or
+Precisely stated, a string s ∈ P* if, and only if, s can be broken into zero or
 more pieces: s = s1 s2 ...sn such that each si ∈ P(n ≥ 0, 1 ≤ i ≤ n). We explicitly
-allow n = 0 so that λ is always in P .
+allow n = 0 so that λ is always in P* .
 Now that we have introduced the operators used in regular expressions,
 we can deﬁne regular expressions as follows:
 * ∅ is a regular expression denoting the empty set (the set containing no
@@ -168,7 +168,7 @@ string. This set is not the same as the empty set because it does contain
 one element.
 * The symbol s is a regular expression denoting { s }: a set containing the
 single symbol s ∈ Σ.
-* If A and B are regular expressions, then A | B, AB, and A are also regular
+* If A and B are regular expressions, then A | B, AB, and A* are also regular
 expressions. They denote, respectively, the alternation, catenation, and
 Kleene closure of the corresponding regular sets.
 
@@ -180,7 +180,7 @@ necessary because their eﬀect can be obtained (perhaps somewhat clumsily)
 using the three standard regular operators (alternation, catenation, and Kleene
 closure):
 * P+ , sometimes called positive closure, denotes all strings consisting of
-one or more strings in P catenated together: P = (P+ | λ) and P+ = P P .
+one or more strings in P catenated together: P* = (P+ | λ) and P+ = P P* .
 For example, the expression (0 | 1)+ is the set of all strings containing one
 or more bits.
 * If A is a set of characters, Not(A) denotes (Σ - A), that is, all characters
@@ -190,7 +190,7 @@ does not contain λ because λ is not a character (it is a zero-length string).
 As an example, Not(Eol) is the set of all characters excluding Eol (the
 end-of-line character; in Java or C, \n).
 It is possible to extend Not() to strings, rather than just Σ. If S is a set of
-strings, we can deﬁne Not(S) to be (Σ - S), that is, the set of all strings
+strings, we can deﬁne Not(S) to be (Σ* - S), that is, the set of all strings
 except those in S. Although Not(S) is usually inﬁnite, it also is regular if
 S is regular (Exercise 18).
 * If k is a constant, then the set Ak represents all strings formed by catenat-
@@ -207,7 +207,7 @@ the ten single digits and L is the set of all upper- and lower-case letters.
 Eol can be deﬁned as
 
 ```C
-Comment = // (Not(Eol)) Eol
+Comment = // (Not(Eol))* Eol
 ```
 This regular expression says that a comment begins with two slashes and
 ends at the ﬁrst end-of-line. Within the comment, any sequence of char-
@@ -232,7 +232,7 @@ closure operator, it is quoted.
 * A more complicated example is a comment delimited by ## markers,
 which allows single #’s within the comment body:
 ```C
-Comment2 = ## ((# | λ) Not(#)) ##
+Comment2 = ## ((# | λ) Not(#))* ##
 ```
 Any **#** that appears within this comment’s body must be followed by a
 non-**#** so that a premature end-of-comment marker, **##**, is not found.
@@ -292,7 +292,7 @@ and read character c, then T[s,c] will be the next state we visit, or T[s,c] wil
 contain an error ﬂag indicating that c cannot extend the current token. For
 example, the regular expression
 ```C
-/ / (Not(Eol)) Eol
+/ / (Not(Eol))* Eol
 ```
 
 which deﬁnes a Java or C++ single-line comment, might be recognized by the
@@ -355,13 +355,13 @@ else /* Signal a lexical error */
 Figure 3.3: Scanner driver interpreting a transition table.
 1. A Fortran-like real literal (which requires either digits on one or both
 sides of a decimal point or just a string of digits) can be deﬁned as
-RealLit = (D+ (λ | . )) | (D . D+ )
+RealLit = (D+ (λ | . )) | (D* . D+ )
 which corresponds to the DFA shown in Figure 3.5(a).
 2. Another form of identiﬁer consists of letters, digits, and underscores. It
 begins with a letter and allows no adjacent or trailing underscores. It
 may be deﬁned as
-
-ID = L (L | D) ( (L | D)+ )
+*
+ID = L (L | D)* ( (L | D)+ )
 This deﬁnition includes identiﬁers such as sum or unit cost but ex-
 cludes one, two , and grand total. The corresponding DFA is shown
 in Figure 3.5(b).
