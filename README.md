@@ -1,47 +1,57 @@
-# crafting-a-compiler
-This project is focused on building a compiler step by step while learning the theory behind it.
-We follow the book *Crafting a Compiler* by Charles N. Fischer, Ron K. Cytron, and Richard J. LeBlanc Jr.
+# Crafting a Compiler
 
-## Chapter Descriptions
+A structured, hands-on journey through compiler construction — grounded in theory, built in practice.
 
-### Chapter 1 — Introduction
-Overview of the compilation process and the idea of constructing a compiler from modular components. The history of compilers is discussed along with tools for generating compiler components.
+This project is based on **_Crafting a Compiler_** by Charles N. Fischer, Ron K. Cytron, and Richard J. LeBlanc Jr. The approach is split into two phases:
 
-### Chapter 2 — A Simple Compiler
-Introduces the simple language `ac` and shows how each compiler component translates `ac` to `dc`. Compiler components are presented in pseudocode, with complete code available in the Crafting a Compiler Supplement.
+1. **Theory** work through the book chapter by chapter to build a solid conceptual foundation.
+2. **Practice** apply that foundation to design and implement our own toy compiler from scratch.
 
-### Chapter 3 — Scanning: Theory and Practice
-Presents lexical analysis concepts and techniques. Covers hand-coded scanners and scanner-generation tools for table-driven lexical analyzers.
+---
 
-### Chapter 4 — Grammars and Parsing
-Covers formal language concepts including context-free grammars, grammar notation, derivations, and parse trees. Introduces grammar-analysis algorithms used in later parsing chapters.
+## Table of Contents
 
-### Chapter 5 — Top-Down Parsing
-Presents top-down parsing techniques, showing how to write parsers explicitly or build a table-driven parsing engine. Includes syntactic error diagnosis, recovery, and repair.
+- [Part I — Foundations](#part-i--foundations)
+- [Part II — Parsing](#part-ii--parsing)
+- [Part III — Semantic Analysis](#part-iii--semantic-analysis)
+- [Part IV — Code Generation & Optimization](#part-iv--code-generation--optimization)
 
-### Chapter 6 — Bottom-Up Parsing
-Describes modern bottom-up parsing techniques and parser-generation tools. Discusses conflict resolution, grammar ambiguity, and heuristics for understanding and resolving ambiguous grammars.
+---
 
-### Chapter 7 — Syntax-Directed Translation
-Introduces the AST and the interface for constructing, managing, and traversing it. Covers the visitor pattern and the role of syntax-directed translation in later compiler phases.
+## Part I — Foundations
 
-### Chapter 8 — Symbol Tables and Declaration Processing
-Defines the symbol table as an abstract compiler component and explores implementation ideas including nested scopes. Introduces semantic analysis for declarations, types, variables, arrays, structures, enums, and type checking.
+| Chapter | Title | Summary |
+|:---:|---|---|
+| 1 | **Introduction** | Overview of the compilation process and the concept of building a compiler from modular components. Covers the history of compilers and tools for generating compiler components. |
+| 2 | **A Simple Compiler** | Introduces the language `ac` and traces how each compiler component translates it to `dc`. Presented in pseudocode, with full implementations in the Crafting a Compiler Supplement. |
+| 3 | **Scanning: Theory and Practice** | Lexical analysis concepts and techniques, covering both hand-coded scanners and scanner-generation tools for table-driven lexical analyzers. |
 
-### Chapter 9 — Semantic Analysis
-Covers semantic checks that go beyond parsing, including control structures like conditionals and loops, as well as exception-related compile-time semantic analysis.
+## Part II — Parsing
 
-### Chapter 10 — Intermediate Representations
-Describes two common intermediate representations: JVM bytecode and SSA form. Provides background for targeting the JVM and introduces SSA Form in preparation for later chapters.
+| Chapter | Title | Summary |
+|:---:|---|---|
+| 4 | **Grammars and Parsing** | Formal language concepts — context-free grammars, grammar notation, derivations, and parse trees — plus grammar-analysis algorithms used in later chapters. |
+| 5 | **Top-Down Parsing** | Techniques for hand-written and table-driven top-down parsers, including syntactic error diagnosis, recovery, and repair. |
+| 6 | **Bottom-Up Parsing** | Modern bottom-up parsing techniques and parser-generation tools, with a focus on conflict resolution and resolving grammar ambiguity. |
+| 7 | **Syntax-Directed Translation** | Introduces the AST, its construction and traversal interface, the visitor pattern, and the role of syntax-directed translation in later phases. |
 
-### Chapter 11 — Code Generation for a Virtual Machine
-Covers code generation for a virtual machine target, emphasizing the benefits of higher-level VM instructions and runtime support. Recommends studying VM code generation before machine-level code generation.
+## Part III — Semantic Analysis
 
-### Chapter 12 — Runtime Support
-Discusses runtime support needed by modern languages and VMs, including static, stack, and heap storage. Covers frames, displays, and the structures needed for nonlocal storage.
+| Chapter | Title | Summary |
+|:---:|---|---|
+| 8 | **Symbol Tables and Declaration Processing** | The symbol table as an abstract component, including nested scopes, along with semantic analysis for declarations, types, arrays, structures, and enums. |
+| 9 | **Semantic Analysis** | Semantic checks beyond parsing — control structures such as conditionals and loops, and compile-time analysis related to exceptions. |
+| 10 | **Intermediate Representations** | Two common IRs: JVM bytecode and SSA form. Groundwork for targeting the JVM and for later use of SSA in optimization. |
 
-### Chapter 13 — Target Code Generation
-Presents low-level target code generation, including register allocation, temporary management, code scheduling, instruction selection, and peephole optimization.
+## Part IV — Code Generation & Optimization
 
-### Chapter 14 — Program Optimization
-Introduces practical program optimizations, advanced control-flow analysis, data-flow analysis, and the use of SSA form in optimization.
+| Chapter | Title | Summary |
+|:---:|---|---|
+| 11 | **Code Generation for a Virtual Machine** | Code generation for a VM target, emphasizing higher-level VM instructions and runtime support. Recommended before machine-level code generation. |
+| 12 | **Runtime Support** | Runtime support for modern languages and VMs — static, stack, and heap storage — plus frames, displays, and structures for nonlocal storage. |
+| 13 | **Target Code Generation** | Low-level code generation: register allocation, temporary management, code scheduling, instruction selection, and peephole optimization. |
+| 14 | **Program Optimization** | Practical optimizations, advanced control-flow analysis, data-flow analysis, and the use of SSA form in optimization. |
+
+---
+
+*This roadmap will evolve as the toy compiler takes shape alongside the theory.*
